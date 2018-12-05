@@ -1,0 +1,8 @@
+{
+  "require": {
+    "nette/php-generator": "2.6"
+  },
+  "autoload": {
+    "classmap": ["core"]
+  }
+}
