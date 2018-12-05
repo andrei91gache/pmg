@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Module generator</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="public/bootstrap.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="public/bootstrap-theme.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+<style>
+    .modal-title {
+        display: inline-block;
+    }
+</style>
+<body>
+
+<div class="container">
+    <div class="form-group row">
+        <label for="module_name" class="col-2 col-form-label">Module Name</label>
+        <div class="col-10">
+            <input class="form-control" id="module_name" type="text" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="module_display_name" class="col-2 col-form-label">Module Display Name</label>
+        <div class="col-10">
+            <input class="form-control" id="module_display_name" type="text" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="module_description" class="col-2 col-form-label">Module Description</label>
+        <div class="col-10">
+            <input class="form-control" id="module_description" type="text" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="module_author" class="col-2 col-form-label">Module Author</label>
+        <div class="col-10">
+            <input class="form-control" id="module_author" type="text" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="module_version" class="col-2 col-form-label">Module Version</label>
+        <div class="col-10">
+            <input class="form-control" id="module_version" type="text" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Module Alert Notifications</label>
+        <div class="form-check">
+            <input class="form-check-input" name="module_alert_notifications" id="module_alert_notifications_no" value="0" type="radio" checked>
+            No
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" name="module_alert_notifications" id="module_alert_notifications_yes" value="1" type="radio">
+            Yes
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Module Cron</label>
+        <div class="form-check">
+            <input class="form-check-input" name="module_alert_cron" value="0" type="radio" checked>
+            No
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" name="module_alert_cron" value="1" type="radio">
+            Yes
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Formulaires</label>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Form name</th>
+                <th><a href="" data-toggle="modal" data-target="#modal-form">Ajouter</a></th>
+            </tr>
+            </thead>
+            <tbody id="module_forms">
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Databases</label>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Database name</th>
+                <th><a href="" data-toggle="modal" data-target="#modal-database">Ajouter</a></th>
+            </tr>
+            </thead>
+            <tbody id="module_databases">
+
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+    <div class="row">
+        <button type="button" id="generateModule" class="btn btn-primary btn-block">Générer le module</button>
+    </div>
+    <br>
+</div>
+
+
+<!-- Modal Form-->
+<div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+
+                    <label for="form_name">Form name</label>
+                    <input class="form-control" id="form_name" type="text">
+
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Input name</th>
+                        <th>Display name</th>
+                        <th>Description</th>
+                        <th>Placeholder</th>
+                        <th><a href="" data-toggle="modal" data-target="#modal-input">Ajouter</a></th>
+                    </tr>
+                    </thead>
+                    <tbody id="form_inputs">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="add_form" data-dismiss="modal">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal input -->
+<div class="modal fade" id="modal-input" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add input</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="input_name">Input name</label>
+                    <input class="form-control" id="input_name" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="display_name">Display name</label>
+                    <input class="form-control" id="display_name" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="input_description">Description</label>
+                    <input class="form-control" id="input_description" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="placeholder">Placeholder</label>
+                    <input class="form-control" id="placeholder" type="text">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="add_input">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Databases -->
+<div class="modal fade" id="modal-database" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Database</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+
+                    <label for="form_name">Database name</label>
+                    <input class="form-control" id="database_name" type="text">
+
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Field name</th>
+                        <th>Type</th>
+                        <th>Length</th>
+                        <th>Null</th>
+                        <th>Default value</th>
+                        <th><a href="" data-toggle="modal" data-target="#modal-field">Ajouter</a></th>
+                    </tr>
+                    </thead>
+                    <tbody id="database_fields">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="add_database" data-dismiss="modal">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Field -->
+<div class="modal fade" id="modal-field" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add field</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="input_name">Field name</label>
+                    <input class="form-control" id="field_name" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="display_name">Type</label><br>
+                    <select id="field_type">
+                        <option value="0" needLength="false" selected>Sélectionner un type</option>
+                        <option value="1" needLength="true">Int</option>
+                        <option value="2" needLength="true">Varchar</option>
+                        <option value="3" needLength="false">Date</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="field_length_parent" style="display: none;">
+                    <label for="placeholder">Length</label>
+                    <input class="form-control" id="field_length" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="input_description">Null</label>
+                    <div class="form-check">
+                        <input class="form-check-input" name="field_null" value="0" type="radio" checked>
+                        No
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" name="field_null" value="1" type="radio">
+                        Yes
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="placeholder">Default value</label>
+                    <input class="form-control" id="field_default_value" type="text">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="add_field">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="public/jquery.js"></script>
+<script src="public/bootstrap.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="public/main.js"></script>
+</body><!-- Latest compiled and minified JavaScript --></html>
