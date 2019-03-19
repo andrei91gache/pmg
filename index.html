@@ -16,93 +16,97 @@
 <body>
 
 <div class="container">
-    <div class="form-group row">
-        <label for="module_name" class="col-2 col-form-label">Module Name</label>
-        <div class="col-10">
-            <input class="form-control" id="module_name" type="text" required>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="module_display_name" class="col-2 col-form-label">Module Display Name</label>
-        <div class="col-10">
-            <input class="form-control" id="module_display_name" type="text" required>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="module_description" class="col-2 col-form-label">Module Description</label>
-        <div class="col-10">
-            <input class="form-control" id="module_description" type="text" required>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="module_author" class="col-2 col-form-label">Module Author</label>
-        <div class="col-10">
-            <input class="form-control" id="module_author" type="text" required>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="module_version" class="col-2 col-form-label">Module Version</label>
-        <div class="col-10">
-            <input class="form-control" id="module_version" type="text" required>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-2 col-form-label">Module Alert Notifications</label>
-        <div class="form-check">
-            <input class="form-check-input" name="module_alert_notifications" id="module_alert_notifications_no" value="0" type="radio" checked>
-            No
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" name="module_alert_notifications" id="module_alert_notifications_yes" value="1" type="radio">
-            Yes
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-2 col-form-label">Module Cron</label>
-        <div class="form-check">
-            <input class="form-check-input" name="module_alert_cron" value="0" type="radio" checked>
-            No
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" name="module_alert_cron" value="1" type="radio">
-            Yes
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-2 col-form-label">Formulaires</label>
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>Form name</th>
-                <th><a href="" data-toggle="modal" data-target="#modal-form">Ajouter</a></th>
-            </tr>
-            </thead>
-            <tbody id="module_forms">
-
-            </tbody>
-        </table>
-    </div>
-
-    <div class="form-group row">
-        <label class="col-2 col-form-label">Databases</label>
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>Database name</th>
-                <th><a href="" data-toggle="modal" data-target="#modal-database">Ajouter</a></th>
-            </tr>
-            </thead>
-            <tbody id="module_databases">
-
-            </tbody>
-        </table>
-    </div>
-
-    <br>
     <div class="row">
-        <button type="button" id="generateModule" class="btn btn-primary btn-block">Générer le module</button>
+        <form action="">
+            <div class="form-group row">
+                <label for="module_name" class="col-2 col-form-label">Module Name</label>
+                <div class="col-10">
+                    <input class="form-control" id="module_name" type="text" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="module_display_name" class="col-2 col-form-label">Module Display Name</label>
+                <div class="col-10">
+                    <input class="form-control" id="module_display_name" type="text" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="module_description" class="col-2 col-form-label">Module Description</label>
+                <div class="col-10">
+                    <input class="form-control" id="module_description" type="text" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="module_author" class="col-2 col-form-label">Module Author</label>
+                <div class="col-10">
+                    <input class="form-control" id="module_author" type="text" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="module_version" class="col-2 col-form-label">Module Version</label>
+                <div class="col-10">
+                    <input class="form-control" id="module_version" type="text" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Module Alert Notifications</label>
+                <div class="form-check">
+                    <input class="form-check-input" name="module_alert_notifications" id="module_alert_notifications_no" value="0" type="radio" checked>
+                    No
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="module_alert_notifications" id="module_alert_notifications_yes" value="1" type="radio">
+                    Yes
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Module Cron</label>
+                <div class="form-check">
+                    <input class="form-check-input" name="module_alert_cron" value="0" type="radio" checked>
+                    No
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="module_alert_cron" value="1" type="radio">
+                    Yes
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Formulaires</label>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Form name</th>
+                        <th><a href="" data-toggle="modal" data-target="#modal-form">Ajouter</a></th>
+                    </tr>
+                    </thead>
+                    <tbody id="module_forms">
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Databases</label>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Database name</th>
+                        <th><a href="" data-toggle="modal" data-target="#modal-database">Ajouter</a></th>
+                    </tr>
+                    </thead>
+                    <tbody id="module_databases">
+
+                    </tbody>
+                </table>
+            </div>
+
+            <br>
+            <div class="row">
+                <button type="button" id="generateModule" class="btn btn-primary btn-block">Générer le module</button>
+            </div>
+            <br>
+        </form>
     </div>
-    <br>
 </div>
 
 
