@@ -28,6 +28,7 @@ class Client extends ModuleGeneratorObject
         $dir->createDir();
 
         $files=  new FileHydrator($this->getConfig());
+
         $files->createFiles();
 
         $zip = new ZipCreator($this->getConfig());

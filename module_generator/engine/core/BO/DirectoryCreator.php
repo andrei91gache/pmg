@@ -43,6 +43,8 @@ class DirectoryCreator extends ModuleGeneratorObject
         }
 
         if ($this->cron){
+            //Create tests folder
+            mkdir($module_name."/tests/src/classes", 0777, true);
             //Create src folder
             mkdir($module_name."/src/config", 0777, true);
             mkdir($module_name."/src/classes", 0777, true);

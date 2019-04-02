@@ -9,7 +9,7 @@
 
 namespace ModuleGenerator\core\BO;
 
-require getcwd().'/engine/vendor/autoload.php';
+require __DIR__.'/../../vendor/autoload.php';
 
 use Nette;
 class FileHydrator extends ModuleGeneratorObject
@@ -19,11 +19,13 @@ class FileHydrator extends ModuleGeneratorObject
      */
     public function __construct($configuration)
     {
+
         parent::__construct($configuration);
     }
 
     public function createFiles()
     {
+
         $this->generateXMLConfigFile();
         $this->generatePredefinitedFiles();
         if ($this->alertService){
@@ -181,6 +183,7 @@ class FileHydrator extends ModuleGeneratorObject
     {
        $dir = getcwd()."/modules_generated/";
         $module_name = $dir.$this->moduleName.'/'.$this->moduleName;
+        copy ( getcwd().'/engine/files/phpunit.xml', $module_name.'/phpunit.xml' );
         copy ( getcwd().'/engine/files/index.php', $module_name.'/index.php' );
         copy ( getcwd().'/engine/files/composer.json', $module_name.'/composer.json' );
 
