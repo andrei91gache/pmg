@@ -303,9 +303,10 @@ function sendAjax(data) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
+                //document.getElementById("debug_php").innerHTML = this.response;
                 var response = JSON.parse(this.response);
                 downloadFile('module_generator/modules_generated/' + response.fileName, response.fileName);
-                //document.getElementById("debug_php").innerHTML = this.response;
+
 
             } else {
                 // Le serveur a renvoyé un status d'erreur
